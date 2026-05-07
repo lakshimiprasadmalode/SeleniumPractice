@@ -1,0 +1,27 @@
+package com.qa.pom;
+
+import org.openqa.selenium.WebDriver;
+import org.openqa.selenium.WebElement;
+import org.openqa.selenium.support.FindBy;
+import org.openqa.selenium.support.PageFactory;
+
+public class AmazonHomePage {
+	
+
+	@FindBy(css="#twotabsearchtextbox:first-of-type")
+	private WebElement searchbox;
+	
+	@FindBy(css="#nav-search-submit-button")
+	private WebElement searchbutton;
+	
+	public AmazonHomePage(WebDriver driver) {
+	
+		PageFactory.initElements(driver, this);
+	}
+	
+	public void searchitem(String item) {
+		searchbox.sendKeys(item);
+		searchbutton.click();
+	}
+
+}
