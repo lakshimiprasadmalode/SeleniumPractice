@@ -4,7 +4,9 @@ import java.time.Duration;
 
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.chrome.ChromeDriver;
+import org.openqa.selenium.edge.EdgeDriver;
 import org.testng.Assert;
+import org.testng.annotations.Parameters;
 import org.testng.annotations.Test;
 
 import com.qa.pom.AmazonHomePage;
@@ -17,12 +19,22 @@ public class HomeTest {
 	WebDriver driver;
 	
 	//public static void main(String [] args) throws InterruptedException {
-	
+	@Parameters("Browser")
 	@Test(priority=1)
-	public void homeTest() throws InterruptedException {
-		WebDriverManager.chromedriver().setup();
+	public void homeTest(String BrowserName) throws InterruptedException {
 		
-	    driver= new ChromeDriver();
+		System.out.println("BrowerName from paramater is ****** :"+"BrowserName");
+		
+		if(BrowserName.contains("chrome")) {
+			WebDriverManager.chromedriver().setup();
+			driver= new ChromeDriver();
+			
+		}
+		else if(BrowserName.contains("edge")) {
+			WebDriverManager.edgedriver().setup();
+			driver= new EdgeDriver();
+		}
+		
 		driver.get("https://www.amazon.com/");
 		driver.manage().window().maximize();
 		driver.manage().deleteAllCookies();
