@@ -40,6 +40,7 @@ public class HomeTest {
 		driver.manage().deleteAllCookies();
 		driver.manage().timeouts().implicitlyWait(Duration.ofSeconds(4000));
 		Thread.sleep(2000);
+		System.out.println("######"+driver.getTitle()+"#########");
 		Assert.assertEquals(driver.getTitle(), "Amazon.com. Spend less. Smile more.");
 		
 	}
