@@ -40,13 +40,13 @@ public class HomeTest {
 		driver.manage().deleteAllCookies();
 		driver.manage().timeouts().implicitlyWait(Duration.ofSeconds(4000));
 		Thread.sleep(2000);
-		System.out.println("######"+driver.getTitle()+"#########");
+		System.out.println("CurrentPageTitle : ######"+driver.getTitle()+"#########");
 		Assert.assertEquals(driver.getTitle(), "Amazon.com. Spend less. Smile more.");
 		
 	}
 	@Test(priority=2)
 	public void searchitem() throws InterruptedException{
-		System.out.println("*********"+driver.getCurrentUrl()+"**********");
+		System.out.println("CurrentPageURL : *********"+driver.getCurrentUrl()+"**********");
 		Assert.assertEquals(driver.getCurrentUrl(),"https://www.amazon.com/");
 		
 		home =new AmazonHomePage(driver);
